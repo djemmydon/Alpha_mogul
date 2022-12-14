@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import {Link} from "react-router-dom"
 
 
 function Navbar() {
@@ -10,13 +11,13 @@ function Navbar() {
       <div className="logo">
         <h3>LOGO</h3>
       </div>
-      <div className="cart">
+      <Link to="/book" className="cart">
         <span className="material-symbols-outlined">shopping_cart</span>
 
-        <div className="count">
+        <div  className="count">
           <span>{total}</span>
         </div>
-      </div>
+      </Link>
     </Body>
   );
 }
@@ -36,6 +37,11 @@ const Body = styled.div`
   justify-content: space-between;
   align-items: center;
   color: white;
+
+  a{
+    color: white;
+    text-decoration: none;
+  }
 
   /* padding: 0 10px; */
 

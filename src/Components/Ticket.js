@@ -61,13 +61,13 @@ function List({ items }) {
 
       <div className="quantity">
         <div className="quantity_minus_remove" onClick={decrease}>
-          <span className="material-symbols-outlined">add</span>
+          <span className="material-symbols-outlined">remove</span>
         </div>
         <div className="quantity_amount">
           <span>{qty}</span>
         </div>
         <div className="quantity_minus_remove" onClick={increase}>
-          <span className="material-symbols-outlined">remove</span>
+          <span className="material-symbols-outlined">add</span>
         </div>
       </div>
 
@@ -128,7 +128,7 @@ const Main = styled.div`
       flex-direction: column;
       align-items: center;
 
-      p{
+      p {
         font-size: 1.2rem;
         font-weight: 600;
       }
@@ -149,7 +149,6 @@ const Main = styled.div`
           color: white;
           font-size: 0.9rem;
           font-weight: 500;
-
         }
       }
 
@@ -172,17 +171,8 @@ const Main = styled.div`
 
 const ticketList = [
   {
+    id: 1,
     name: "Regular TIcket",
-    price: 5000,
-  },
-
-  {
-    name: "Table For 5 TIcket",
-    price: 60000,
-  },
-
-  {
-    name: "VIP TIcket",
-    price: 100000,
+    price: 3000,
   },
 ];

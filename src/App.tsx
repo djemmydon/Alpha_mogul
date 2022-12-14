@@ -1,4 +1,5 @@
 // import logo from "./logo.svg";
+import * as React from "react";
 import "./App.css";
 import {
   BrowserRouter,
@@ -8,17 +9,21 @@ import {
   // useLocation,
 } from "react-router-dom";
 import Event from "./Pages/Event";
+import Book from "./Pages/Book";
 import Navbar from "./Components/Navbar";
+
 
 function App() {
   return (
     <div>
-        <Navbar />
 
       <BrowserRouter>
+      <Navbar />
+
         {/* <ScrollToTop /> */}
         <Routes>
           <Route path="/" element={<Event />} />
+          <Route path="/book" element={<Book />} />
           {/* <Route path="/sign-up" element={<SignUp />} /> */}
         </Routes>
       </BrowserRouter>

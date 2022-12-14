@@ -13,6 +13,8 @@ code {
   
 }
 
+
+
 span{
   font-family: 'Montserrat', sans-serif;
 
@@ -21,4 +23,9 @@ span{
 
 header{
   font-size: 2rem;
+}
+
+button{
+  font-family: 'Montserrat', sans-serif;
+
 }

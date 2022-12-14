@@ -1,0 +1,11 @@
+// tsconfig.json
+
+{
+  "compilerOptions": {
+    "jsx": "react",
+    // ...
+    "rootDir": "src",
+    "outDir": "build"
+    // ...
+  },
+}
