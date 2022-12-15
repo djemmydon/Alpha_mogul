@@ -12,7 +12,7 @@ function EventBody() {
     <Body>
       <Text>
         <h1>
-          Alpha Mogul Live <br /> In Concert 2022
+          TUK FEST 
         </h1>
 
         <p>
@@ -60,7 +60,10 @@ function EventBody() {
 export default EventBody;
 
 const Body = styled.div`
-  background-image: url(/img/kenny-g.jpg);
+  background-image: url(/img/bg11.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
   width: 100%;
   height: 100vh;
   position: relative;
