@@ -133,6 +133,8 @@ function Cart({ ticket }) {
                 Pay {ticket?.allTotalPrice}
               </button>
             </div>
+
+            {/* <p>{ticket?.itemList?.redcuce((a,b) => (a+b.qty) , 0)}</p> */}
           </div>
         </Form>
       </Body>
@@ -150,7 +152,7 @@ function Cart({ ticket }) {
               <div className="ticket_head">
                 <h1>TUK FEST</h1>
                 <span class="material-symbols-outlined">location_on</span>
-                <p>Barcode, No 2, Osuntokun Avenue,Old Bodija Estae, Ibadan</p>
+                <p>Barcode, No 2, Osuntokun Avenue,Old Bodija Estate, Ibadan</p>
               </div>
 
               <div>
@@ -168,7 +170,7 @@ function Cart({ ticket }) {
               </div>
               <div className="input_element">
                 <p>
-                  <span>No. of seat:</span> 50
+                  <span>No. of seat:</span> {ticket?.itemList.reduce((a,b) => (a+b.qty) , 0)}
                 </p>
                 <p>
                   <span>Trans. Refrence:</span> {data.reference}
