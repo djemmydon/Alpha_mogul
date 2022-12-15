@@ -5,6 +5,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+
+
+  background: rgb(238,201,174);
+background: radial-gradient(circle, rgba(238,201,174,1) 0%, rgba(219,133,21,1) 100%);
 }
 
 code {

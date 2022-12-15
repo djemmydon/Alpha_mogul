@@ -1,7 +1,10 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import { usePaystackPayment } from "react-paystack";
-import { useReactToPrint } from "react-to-print";
+// import { useReactToPrint } from "react-to-print";
+import exportAsImage from "../../exportAs";
 
 function Cart({ ticket }) {
   const [firstName, setFirstName] = React.useState("");
@@ -13,7 +16,7 @@ function Cart({ ticket }) {
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: ticket.allTotalPrice * 100,
+    amount: ticket?.allTotalPrice * 100,
     firstName,
     lastName,
     publicKey: "pk_test_0af8c9c840c5cec7443250dcc87f7a44b02eb8b0",
@@ -39,26 +42,44 @@ function Cart({ ticket }) {
 
   const componentRef = React.useRef();
 
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: " Tuk-Fest",
-    onAfterPrint: () => alert("print success"),
-  });
+  const navigate = useNavigate();
+
+  // const handlePrint = useReactToPrint({
+  //   content: () => componentRef.current,
+  //   documentTitle: " Tuk-Fest",
+  //   onAfterPrint: () => alert("print success"),
+  // });
   return (
     <>
       <Body>
-        <Head>
+        {/* <Head>
           <h1>Complete Your Purchase</h1>
-        </Head>
+          <div className="overlay"></div>
+        </Head> */}
         <MinDetail>
           <div className="box_body">
-            {ticket.itemList.map((p) => (
-              <div style={{ fontSize: "40px" }} className="item">
-                <h1>{p.name}</h1>
+            {ticket?.itemList?.map((p) => (
+              <div className="item">
+                <div className="left">
+                  <h2>
+                    {/* <span>Name:</span> */}
+                    TUK FEST
+                  </h2>
+                  <span>Dec 30, 2022</span>
 
-                <div>
-                  <h2>Number of Seats: {p.qty}</h2>
-                  <h2>Total Price: ₦{p.totalPrice.toLocaleString()}</h2>
+                  <p>
+                    Barcode, No 2, Osuntokun Avene,Old Bodija Estate, Ibadan
+                  </p>
+                </div>
+                <div className="right">
+                  <h2>
+                    {" "}
+                    <span>Number of Seats:</span> {p.qty}
+                  </h2>
+                  <h2>
+                    {" "}
+                    <span>Total Price:</span> ₦{p.totalPrice.toLocaleString()}
+                  </h2>
                 </div>
               </div>
             ))}
@@ -107,7 +128,10 @@ function Cart({ ticket }) {
                   e.preventDefault();
                   initializePayment(onSuccess, onClose);
                 }}
-              ></button>
+              >
+                {" "}
+                Pay {ticket?.allTotalPrice}
+              </button>
             </div>
           </div>
         </Form>
@@ -139,10 +163,7 @@ function Cart({ ticket }) {
               </div>
               <div className="input_element">
                 <p>
-                  <span>Booking Price:</span> 50
-                </p>
-                <p>
-                  <span>Phone No.:</span> {phone}
+                  <span>Phone No:</span> {phone}
                 </p>
               </div>
               <div className="input_element">
@@ -150,13 +171,36 @@ function Cart({ ticket }) {
                   <span>No. of seat:</span> 50
                 </p>
                 <p>
-                  <span>Payment Status</span> {data.status}
+                  <span>Trans. Refrence:</span> {data.reference}
+                </p>
+                <p>
+                  <span>Status</span> {data.status}
+                </p>
+                <p className="price">
+                  <span>Amount:</span>₦{ticket.allTotalPrice.toLocaleString()}
                 </p>
               </div>
+
+              <p className="diclaimer">
+                <span>Disclaimer:</span> Holder of this ticket voluntarily
+                assumes all risks and danger incidental to any event for which
+                this ticket is issued and waives all claims against the event
+                sponsor, the owner of the facility, the ticket producer or
+                issuer.
+              </p>
             </TiketBody>
           </div>
 
-          <button type="submit" onClick={handlePrint}>
+          <button
+            type="submit"
+            onClick={() => {
+              exportAsImage(componentRef.current, "test");
+              localStorage.removeItem("itemList");
+              localStorage.removeItem("allTotalPrice");
+              localStorage.removeItem("totalQuantity");
+              navigate("/");
+            }}
+          >
             Download Ticket now
           </button>
         </Tickets>
@@ -170,26 +214,39 @@ export default Cart;
 const Body = styled.div`
   height: 100%;
 `;
-const Head = styled.div`
-  padding-top: 5rem;
-  width: 100%;
-  background: #002d80;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+// const Head = styled.div`
+//   padding-top: 5rem;
+//   width: 100%;
+//   background: url(/img/bg11.jpeg);
 
-  h1 {
-    font-size: 3rem;
-  }
-`;
+//   height: 70vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: white;
+//   position: relative;
+//   h1 {
+//     font-size: 3rem;
+//     text-align: center;
+//     position: relative;
+//     z-index: 10;
+//   }
+
+//   .overlay {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: #0000009b;
+//   }
+// `;
 
 const MinDetail = styled.div`
-  width: 1280px;
+  width: 100%;
   top: 25rem;
   height: 320px;
-  background: #f4f4f4;
+
   z-index: 100;
   color: black;
 
@@ -205,20 +262,26 @@ const MinDetail = styled.div`
   }
 
   .box_body {
-    width: 1000px;
-    height: 300px;
+    width: 100%;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin-top: 5rem;
 
     .item {
-      width: 800px;
+      width: 600px;
       height: 200px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: #f14105;
+      justify-content: space-around;
+      background: rgba(186, 147, 147, 0.36);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(6.2px);
+      -webkit-backdrop-filter: blur(6.2px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 10px;
       padding: 10px;
       color: white;
@@ -230,16 +293,45 @@ const MinDetail = styled.div`
         height: 300px;
       }
 
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+
+        h2 {
+          font-size: 2rem;
+          padding: 5px 0;
+          margin: 0;
+          color: #f14105;
+        }
+        span {
+          text-align: start;
+          color: rgb(40, 38, 38);
+          font-size: 0.8rem;
+          padding: 5px 0;
+          font-weight: 600;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 0.9rem;
+          padding: 5px 0;
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+      }
       .iconn {
         font-size: 2rem;
         color: rgb(201, 201, 201);
         font-weight: 400;
       }
       h2 {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
       p {
-        color: rgb(177, 169, 169);
       }
     }
   }
@@ -342,66 +434,14 @@ const Tickets = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-top: 3rem;
 
   height: 100%;
 
-
   .ticket_body.active {
-  
   }
 
-
-`;
-
-
-const TiketBody  = styled.div`
-  
-
-    width: 300px;
-    height: 400px;
-    background: #f14105;
-    border-radius: 15px;
-    scroll-behavior: auto;
-    transition: all 0.4s;
-    transform: scale(1);
-    padding: 10px 20px;
-    text-align: center;
-
-    h1 {
-      text-align: center;
-      font-size: 32px;
-      color: #ffffff;
-      font-family: "Arial Black", Gadget, sans-serif;
-      text-shadow: 0px 0px 0 rgb(206, 206, 206), 1px 1px 0 rgb(157, 157, 157),
-        2px 2px 0 rgb(108, 108, 108), 3px 3px 2px rgba(0, 0, 0, 0.6),
-        3px 3px 1px rgba(0, 0, 0, 0.5), 0px 0px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .ticket_head {
-      text-align: center;
-      display: flex;
-      justify-items: center;
-      flex-direction: column;
-      gap: 5px;
-      color: white;
-      p,
-      span,
-      h1 {
-        margin: 0;
-        padding: 0;
-      }
-    }
-
-    p {
-      color: white;
-      font-size: 0.9rem;
-      span {
-        font-weight: 700;
-      }
-    }
-  
-  
-    button {
+  button {
     width: 300px;
     height: 40px;
     margin-bottom: 30px;
@@ -419,4 +459,69 @@ const TiketBody  = styled.div`
       transform: scale(1);
     }
   }
-`
+`;
+
+const TiketBody = styled.div`
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  border-radius: 15px;
+  scroll-behavior: auto;
+  transition: all 0.4s;
+  transform: scale(1);
+  /* padding: 10px 20px; */
+
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #ffffff;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-shadow: 0px 0px 0 rgb(206, 206, 206), 1px 1px 0 rgb(157, 157, 157),
+      2px 2px 0 rgb(108, 108, 108), 3px 3px 2px rgba(0, 0, 0, 0.6),
+      3px 3px 1px rgba(0, 0, 0, 0.5), 0px 0px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .ticket_head {
+    text-align: center;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    gap: 5px;
+    color: white;
+    background: #f14105;
+    max-width: 300px;
+    padding-bottom: 5px;
+
+    p,
+    span,
+    h1 {
+      margin: 0;
+      padding: 0;
+      color: white;
+      border: none;
+    }
+  }
+
+  p {
+    color: white;
+    font-size: 0.63rem;
+    color: black;
+    border-bottom: 1px solid black;
+    padding: 3px 10px;
+
+    span {
+      font-weight: 700;
+    }
+  }
+  .price {
+    background: #f14105;
+    border: none;
+    color: white;
+    font-size: 1rem;
+  }
+  .diclaimer {
+    font-size: 0.6rem;
+    border: none;
+    padding: 0 10px;
+  }
+`;

@@ -2,35 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./res/Button";
 // import { PaystackButton } from 'react-paystack';
-
+// import Cart from './cart/Cart'
 
 function EventBody() {
 
-    // const config = {
-    //     reference: (new Date()).getTime().toString(),
-    //     email: "okinopatrick0@gmail.com",
-    //     amount: 20000,
-    //     publicKey: 'pk_test_9286738c5dddd1dd2a33753aaccc3383eb2ee96a',
-    //   };
 
-
-    //   const handlePaystackSuccessAction = (reference) => {
-    //     // Implementation for whatever you want to do with reference and after success call.
-    //     console.log(reference);
-    //   };
-  
-      // you can call this function anything
-    //   const handlePaystackCloseAction = () => {
-    //     // implementation for  whatever you want to do when the Paystack dialog closed.
-    //     console.log('closed')
-    //   }
-  
-    //   const componentProps = {
-    //       ...config,
-    //       text: 'Paystack Button Implementation',
-    //       onSuccess: (reference) => handlePaystackSuccessAction(reference),
-    //       onClose: handlePaystackCloseAction,
-    //   };
   
   return (
     <Body>
@@ -77,7 +53,6 @@ function EventBody() {
 
       <div className="overlay"></div>
 
-
     </Body>
   );
 }
@@ -86,7 +61,7 @@ export default EventBody;
 
 const Body = styled.div`
   background-image: url(/img/kenny-g.jpg);
-  max-width: 100%;
+  width: 100%;
   height: 100vh;
   position: relative;
   color: white;
@@ -96,7 +71,7 @@ const Body = styled.div`
 
   .overlay {
     position: absolute;
-    width: 100%;
+    width: 100%;    
     height: 100%;
     top: 0;
     left: 0;
@@ -137,8 +112,13 @@ const Text = styled.div`
 const MinDetail = styled.div`
   width: 1280px;
   height: 320px;
-  background: #f4f4f4;
-  position: absolute;
+
+  background: rgba(255, 255, 255, 0.36);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.2px);
+-webkit-backdrop-filter: blur(7px);
+border: 1px solid rgba(255, 255, 255, 0.3);  position: absolute;
   bottom: -10rem;
   z-index: 100;
   color: black;
@@ -172,14 +152,14 @@ const MinDetail = styled.div`
       height: 200px;
       .iconn {
         font-size: 2rem;
-        color: rgb(201, 201, 201);
+        color: #f14105;
         font-weight: 400;
       }
       h2 {
         font-size: 1.5rem;
       }
       p {
-        color: rgb(177, 169, 169);
+        color:black;
       }
     }
   }

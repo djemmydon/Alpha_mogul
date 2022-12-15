@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { useReactToPrint } from "react-to-print";
 import styled from "styled-components";
@@ -24,6 +25,9 @@ function Ticket() {
 export default Ticket;
 
 function List({ items }) {
+
+
+  const navigate = useNavigate()
   const [qty, setQty] = useState(1);
   console.log(items);
 
@@ -44,6 +48,7 @@ function List({ items }) {
   const dispatch = useDispatch();
   const addToCartHandler = () => {
     dispatch(cartActions.addToCart({ ...items, qty, totalPrice }));
+    navigate("/book")
   };
   const componentRef = useRef();
 
@@ -79,7 +84,7 @@ function List({ items }) {
 }
 
 const Body = styled.div`
-  background: white;
+  /* background: white; */
   width: 100%;
   position: relative;
   margin-top: 5rem;
@@ -117,7 +122,13 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background: #f4f4f4;
+    
+background: rgba(255, 255, 255, 0.36);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.2px);
+-webkit-backdrop-filter: blur(6.2px);
+border: 1px solid rgba(255, 255, 255, 0.3);
     color: black;
     border-bottom: 2px solid #f14105;
     padding: 10px;
