@@ -8,7 +8,7 @@ function About() {
 
       <p>
         The undisputed kreatives fest is the first of it's kind in the city of
-        ibadan. Th is event encourages creative minds to use fashion, dance,
+        ibadan. This event encourages creative minds to use fashion, dance,
         music, drama, graphics and entertainment to express creativity
       </p>
     </Body>

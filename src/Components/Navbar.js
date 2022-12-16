@@ -11,7 +11,7 @@ function Navbar() {
 
       <div className="logo"> 
        <Link to="/">
-    <img src="/img/peculiar.png" alt=""/>
+    <img src="/img/pp.png" alt="Alpha mogul logo"/>
        
        </Link>
     
