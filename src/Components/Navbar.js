@@ -11,7 +11,7 @@ function Navbar() {
 
       <div className="logo"> 
        
-    <img src="/img/TUK3.png" alt=""/>
+    <img src="/img/peculiar.png" alt=""/>
     
       </div>
     
@@ -47,6 +47,8 @@ const Body = styled.div`
     margin-top: 30px;
     margin-left: 10px;
     height: 50px;
+    position: relative;
+    z-index: 10px;
 
     @media screen and (max-width: 500px) {
     margin-top: 10px;
