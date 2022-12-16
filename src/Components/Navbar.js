@@ -10,8 +10,10 @@ function Navbar() {
     <Body>
 
       <div className="logo"> 
-       
+       <Link to="/">
     <img src="/img/peculiar.png" alt=""/>
+       
+       </Link>
     
       </div>
     
