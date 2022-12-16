@@ -36,7 +36,7 @@ const Body = styled.div`
 
   @media screen and (max-width: 900px) {
     margin: 0rem 0;
-    margin-top: 2rem;
+    margin-top: 5rem;
    position: absolute;
    top: 24rem;
     width: 100%;
@@ -47,7 +47,7 @@ const Body = styled.div`
   }
   @media screen and (max-width: 500px) {
     margin: 0rem 0;
-    margin-top: 2rem;
+    margin-top: 4rem;
    position: absolute;
    top: 22rem;
     width: 100%;

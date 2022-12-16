@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Ticket from "./Ticket";
 // import Button from "./res/Button";
 // import { PaystackButton } from 'react-paystack';
 // import Cart from './cart/Cart'
@@ -7,9 +8,7 @@ import styled from "styled-components";
 function EventBody() {
   return (
     <Body>
-      <Text>
-    
-      </Text>
+      <Ticket/>
 {/* 
       <MinDetail>
         <div className="box_body">
@@ -55,13 +54,14 @@ const Body = styled.div`
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   position: relative;
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
-
+  /* align-items: center; */
+margin: 0;
+padding: 0;
   .overlay {
     position: absolute;
     width: 100%;
@@ -72,33 +72,33 @@ const Body = styled.div`
   }
 `;
 
-const Text = styled.div`
-  text-align: center;
-  position: relative;
-  z-index: 100;
+// const Text = styled.div`
+//   text-align: center;
+//   position: relative;
+//   z-index: 100;
 
-  h1 {
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
-    font-size: 4rem;
+//   h1 {
+//     margin: 0;
+//     padding: 0;
+//     font-weight: 700;
+//     font-size: 4rem;
 
-    @media screen and (max-width: 700px) {
-      font-size: 3rem;
-    }
-    @media screen and (max-width: 500px) {
-      font-size: 2rem;
-    }
-  }
-  p {
-    margin: 0;
-    padding: 0;
+//     @media screen and (max-width: 700px) {
+//       font-size: 3rem;
+//     }
+//     @media screen and (max-width: 500px) {
+//       font-size: 2rem;
+//     }
+//   }
+//   p {
+//     margin: 0;
+//     padding: 0;
 
-    span {
-      color: #d9072a;
-    }
-  }
-`;
+//     span {
+//       color: #d9072a;
+//     }
+//   }
+// `;
 
 // const MinDetail = styled.div`
 //   width: 1280px;
