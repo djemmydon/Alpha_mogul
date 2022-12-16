@@ -76,10 +76,13 @@ function Cart({ ticket }) {
   
       })
 
-    localStorage.removeItem("itemList");
-    localStorage.removeItem("allTotalPrice");
-    localStorage.removeItem("totalQuantity");
+    // localStorage.removeItem("itemList");
+    // localStorage.removeItem("allTotalPrice");
+    // localStorage.removeItem("totalQuantity");
+
     navigate("/");
+    window.location.reload(false);
+
      console.log(db);
   }
   return (

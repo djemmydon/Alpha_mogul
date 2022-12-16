@@ -55,7 +55,7 @@ const Body = styled.div`
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 50vh;
+  height: 100vh;
   position: relative;
   color: white;
   display: flex;

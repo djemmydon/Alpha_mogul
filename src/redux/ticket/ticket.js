@@ -3,15 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 // import Cookies from "js-cookie";
 
 const initialState = {
-  itemList: localStorage.getItem("itemList")
-    ? JSON.parse(localStorage.getItem("itemList"))
-    : [],
-  totalQuantity: localStorage.getItem("totalQuantity")
-    ? JSON.parse(localStorage.getItem("totalQuantity"))
-    : 0,
-  allTotalPrice: localStorage.getItem("allTotalPrice")
-    ? JSON.parse(localStorage.getItem("allTotalPrice"))
-    : 0,
+  itemList: [],
+  totalQuantity: 0,
+  allTotalPrice: 0,
   showCart: false,
 };
 const cartSlice = createSlice({
@@ -25,15 +19,15 @@ const cartSlice = createSlice({
 
       // message.success("Item Added successfully", 3);
 
-      localStorage.setItem(
-        "totalQuantity",
-        JSON.stringify(state.totalQuantity)
-      );
-      localStorage.setItem(
-        "allTotalPrice",
-        JSON.stringify(state.allTotalPrice)
-      );
-      localStorage.setItem("itemList", JSON.stringify(state.itemList));
+      // localStorage.setItem(
+      //   "totalQuantity",
+      //   JSON.stringify(state.totalQuantity)
+      // );
+      // localStorage.setItem(
+      //   "allTotalPrice",
+      //   JSON.stringify(state.allTotalPrice)
+      // );
+      // localStorage.setItem("itemList", JSON.stringify(state.itemList));
     },
 
     removeFromCart(state, action) {
@@ -50,15 +44,15 @@ const cartSlice = createSlice({
 
       // console.log(product.price, product.qty);
 
-      localStorage.setItem("itemList", JSON.stringify(state.itemList));
-      localStorage.setItem(
-        "totalQuantity",
-        JSON.stringify(state.totalQuantity)
-      );
-      localStorage.setItem(
-        "allTotalPrice",
-        JSON.stringify(state.allTotalPrice)
-      );
+      // localStorage.setItem("itemList", JSON.stringify(state.itemList));
+      // localStorage.setItem(
+      //   "totalQuantity",
+      //   JSON.stringify(state.totalQuantity)
+      // );
+      // localStorage.setItem(
+      //   "allTotalPrice",
+      //   JSON.stringify(state.allTotalPrice)
+      // );
 
       // message.success("Item removed successfully", 3);
     },
