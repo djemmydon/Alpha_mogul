@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./res/Button";
+// import Button from "./res/Button";
 // import { PaystackButton } from 'react-paystack';
 // import Cart from './cart/Cart'
 
@@ -10,7 +10,7 @@ function EventBody() {
       <Text>
     
       </Text>
-
+{/* 
       <MinDetail>
         <div className="box_body">
           <div>
@@ -39,11 +39,12 @@ function EventBody() {
             <Button ticket="Book Ticket" />
           </div>
         </div>
-      </MinDetail>
+      </MinDetail> */}
 
       <div className="overlay"></div>
     </Body>
   );
+   
 }
 
 export default EventBody;
@@ -99,57 +100,57 @@ const Text = styled.div`
   }
 `;
 
-const MinDetail = styled.div`
-  width: 1280px;
-  height: 320px;
+// const MinDetail = styled.div`
+//   width: 1280px;
+//   height: 320px;
 
-  background: rgba(255, 255, 255, 0.36);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.2px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  position: absolute;
-  bottom: -10rem;
-  z-index: 100;
-  color: black;
+//   background: rgba(255, 255, 255, 0.36);
+//   border-radius: 16px;
+//   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//   backdrop-filter: blur(6.2px);
+//   -webkit-backdrop-filter: blur(7px);
+//   border: 1px solid rgba(255, 255, 255, 0.3);
+//   position: absolute;
+//   bottom: -10rem;
+//   z-index: 100;
+//   color: black;
 
-  display: flex;
-  justify-content: center;
+//   display: flex;
+//   justify-content: center;
 
-  @media screen and (max-width: 1200px) {
-    width: 100%;
-  }
-  @media screen and (max-width: 900px) {
-    height: 100%;
-    bottom: -33rem;
-  }
+//   @media screen and (max-width: 1200px) {
+//     width: 100%;
+//   }
+//   @media screen and (max-width: 900px) {
+//     height: 100%;
+//     bottom: -33rem;
+//   }
 
-  .box_body {
-    width: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+//   .box_body {
+//     width: 1000px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
 
-    @media screen and (max-width: 900px) {
-      flex-direction: column;
-      padding: 30px 0;
-    }
+//     @media screen and (max-width: 900px) {
+//       flex-direction: column;
+//       padding: 30px 0;
+//     }
 
-    div {
-      width: 300px;
-      height: 200px;
-      .iconn {
-        font-size: 2rem;
-        color: #f14105;
-        font-weight: 400;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      p {
-        color: black;
-      }
-    }
-  }
-`;
+//     div {
+//       width: 300px;
+//       height: 200px;
+//       .iconn {
+//         font-size: 2rem;
+//         color: #f14105;
+//         font-weight: 400;
+//       }
+//       h2 {
+//         font-size: 1.5rem;
+//       }
+//       p {
+//         color: black;
+//       }
+//     }
+//   }
+// `;

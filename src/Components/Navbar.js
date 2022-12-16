@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -7,9 +8,9 @@ function Navbar() {
     // const total = useSelector(state => state.cart.totalQuantity)
   return (
     <Body>
-      <div className="logo">
+      <Link to="/" className="logo">
     <img src="/img/TUK3.png" alt=""/>
-      </div>
+      </Link>
      
     </Body>
   );
@@ -42,6 +43,13 @@ const Body = styled.div`
     margin-top: 30px;
     margin-left: 30px;
     height: 50px;
+
+    @media screen and (max-width: 500px) {
+    margin-top: 10px;
+
+      height: 43px;
+
+        }
     img{
       height: 100%;
     }

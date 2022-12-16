@@ -36,7 +36,7 @@ function Table() {
     <Body>
 
 <h1>Billing Information</h1>
-      <div>
+      
         {" "}
 
         {!booking.length ? (
@@ -44,9 +44,9 @@ function Table() {
                <BounceLoader color="white"  />
               </div>
             ) : (
-                <table>
 
-
+                <div className="t_body">
+                      <table>
                 <thead>
                   <tr>
                     <th>User Name</th>
@@ -86,10 +86,12 @@ function Table() {
                     </>
              
                 </tbody>
-              </table>
+              </table> 
+                </div>
+             
                 )}
       
-      </div>
+   
     </Body>
   );
 }
@@ -97,13 +99,14 @@ function Table() {
 export default Table;
 
 const Body = styled.div`
-  display: flex;
+  /* display: flex; */
   /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   height: 100vh;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
   h1 {
     font-size: 1.4rem;
     color: #002d80;
@@ -119,15 +122,19 @@ const Body = styled.div`
       top: 35px;
     }
   }
-  div {
-    overflow-x: scroll;
-
-    table {
-      user-select: none;
+  .t_body {
       width: 100%;
+      overflow-x: scroll;
+  
+    table {
+        width: 100%;
+      user-select: none;
       font-size: 0.8rem;
       border-collapse: collapse;
       font-family: "Montserrat", sans-serif;
+   
+      overflow-x: scroll;
+
 
       thead {
         background-color: red;
@@ -136,11 +143,16 @@ const Body = styled.div`
       }
 
       thead tr th {
-        padding: 19px 13px;
+        padding: 10px 13px;
         font-weight: 300;
         white-space: nowrap;
       font-family: "Montserrat", sans-serif;
         font-weight: 600;
+
+        @media screen and (max-width: 500px) {
+        padding: 3px 3px;
+        font-size: 0.6rem;
+        }
       }
     }
     tbody {
@@ -156,7 +168,11 @@ const Body = styled.div`
       transition: 0.6s;
       font-family: "Montserrat", sans-serif;
       font-weight: 600;
-
+      @media screen and (max-width: 500px) {
+        padding: 5px 5px;
+        font-size: 0.6rem;
+            
+        }
     }
     .checked {
       text-decoration: line-through;
