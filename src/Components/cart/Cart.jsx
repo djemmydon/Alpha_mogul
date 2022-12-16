@@ -5,6 +5,11 @@ import styled from "styled-components";
 import { usePaystackPayment } from "react-paystack";
 // import { useReactToPrint } from "react-to-print";
 import exportAsImage from "../../exportAs";
+import {db} from "../../fire"
+// import {set, ref} from "firebase/database"
+// import { uid } from "uid";
+import { addDoc, collection } from "firebase/firestore";
+// import { async } from "@firebase/util";
 
 function Cart({ ticket }) {
   const [firstName, setFirstName] = React.useState("");
@@ -12,6 +17,7 @@ function Cart({ ticket }) {
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [data, setData] = React.useState({});
+
 
   const config = {
     reference: new Date().getTime().toString(),
@@ -23,11 +29,10 @@ function Cart({ ticket }) {
   };
 
   // you can call this function anything
-  const onSuccess = (reference) => {
+   const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
-
-    console.log(reference);
     setData(reference);
+   
   };
 
   // you can call this function anything
@@ -36,9 +41,9 @@ function Cart({ ticket }) {
     console.log("closed");
   };
 
-  console.log(data);
+  // console.log(data);
   const initializePayment = usePaystackPayment(config);
-  console.log(ticket);
+  // console.log(ticket);
 
   const componentRef = React.useRef();
 
@@ -49,17 +54,49 @@ function Cart({ ticket }) {
   //   documentTitle: " Tuk-Fest",
   //   onAfterPrint: () => alert("print success"),
   // });
+
+  const seat = ticket.itemList?.reduce((a,b) => a+b.qty, 0)
+
+  console.log(seat);
+  const handleDownload=  () => {
+    exportAsImage(componentRef.current, "test");
+
+    addDoc(collection(db, "booking"),{
+      
+      firstName:firstName,
+      lastName:lastName,
+      email:email,
+      phone:phone,
+      ref: data.reference,
+      date:new Date().getTime().toString(),
+      amount: ticket?.allTotalPrice,
+      status:data.status,
+      seat,
+      complete:false
+  
+      })
+
+    localStorage.removeItem("itemList");
+    localStorage.removeItem("allTotalPrice");
+    localStorage.removeItem("totalQuantity");
+    navigate("/");
+     console.log(db);
+  }
   return (
     <>
       <Body>
-        {/* <Head>
+        <Head>
           <h1>Complete Your Purchase</h1>
           <div className="overlay"></div>
-        </Head> */}
+        </Head>
         <MinDetail>
           <div className="box_body">
-            {ticket?.itemList?.map((p) => (
-              <div className="item">
+
+            {ticket.itemList.length === 0 ? (<><h1 className="item" >Empty Ticket</h1></>) :
+            
+            (<>
+               {ticket?.itemList?.map((p) => (
+              <div className="item" key={p.id}>
                 <div className="left">
                   <h2>
                     {/* <span>Name:</span> */}
@@ -83,6 +120,9 @@ function Cart({ ticket }) {
                 </div>
               </div>
             ))}
+            </>)
+            }
+         
           </div>
         </MinDetail>
         <Form>
@@ -130,7 +170,7 @@ function Cart({ ticket }) {
                 }}
               >
                 {" "}
-                Pay {ticket?.allTotalPrice}
+                Pay:₦{ticket?.allTotalPrice.toLocaleString()}
               </button>
             </div>
 
@@ -151,7 +191,7 @@ function Cart({ ticket }) {
             >
               <div className="ticket_head">
                 <h1>TUK FEST</h1>
-                <span class="material-symbols-outlined">location_on</span>
+                <span className="material-symbols-outlined">location_on</span>
                 <p>Barcode, No 2, Osuntokun Avenue,Old Bodija Estate, Ibadan</p>
               </div>
 
@@ -190,18 +230,14 @@ function Cart({ ticket }) {
                 sponsor, the owner of the facility, the ticket producer or
                 issuer.
               </p>
+
+              <div className="overlay"></div>
             </TiketBody>
           </div>
 
           <button
             type="submit"
-            onClick={() => {
-              exportAsImage(componentRef.current, "test");
-              localStorage.removeItem("itemList");
-              localStorage.removeItem("allTotalPrice");
-              localStorage.removeItem("totalQuantity");
-              navigate("/");
-            }}
+            onClick={handleDownload}
           >
             Download Ticket now
           </button>
@@ -216,33 +252,36 @@ export default Cart;
 const Body = styled.div`
   height: 100%;
 `;
-// const Head = styled.div`
-//   padding-top: 5rem;
-//   width: 100%;
-//   background: url(/img/bg11.jpeg);
+const Head = styled.div`
+  padding-top: 5rem;
+  width: 100%;
+  background-image: url(/img/tuk-bgron1.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
-//   height: 70vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: white;
-//   position: relative;
-//   h1 {
-//     font-size: 3rem;
-//     text-align: center;
-//     position: relative;
-//     z-index: 10;
-//   }
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
 
-//   .overlay {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: #0000009b;
-//   }
-// `;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000b6;
+  }
+`;
 
 const MinDetail = styled.div`
   width: 100%;
@@ -466,13 +505,24 @@ const Tickets = styled.div`
 const TiketBody = styled.div`
   width: 300px;
   height: 400px;
-  background: #fff;
+  background-image: url(/img/tikect.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
   border-radius: 15px;
   scroll-behavior: auto;
   transition: all 0.4s;
   transform: scale(1);
   /* padding: 10px 20px; */
-
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffffe6;
+  }
   h1 {
     text-align: center;
     font-size: 32px;
@@ -484,6 +534,8 @@ const TiketBody = styled.div`
   }
 
   .ticket_head {
+    position: relative;
+    z-index: 10;
     text-align: center;
     display: flex;
     justify-items: center;
@@ -493,6 +545,8 @@ const TiketBody = styled.div`
     background: #f14105;
     max-width: 300px;
     padding-bottom: 5px;
+    position: relative;
+    z-index: 10;
 
     p,
     span,
@@ -501,6 +555,8 @@ const TiketBody = styled.div`
       padding: 0;
       color: white;
       border: none;
+      position: relative;
+    z-index: 10;
     }
   }
 
@@ -510,9 +566,12 @@ const TiketBody = styled.div`
     color: black;
     border-bottom: 1px solid black;
     padding: 3px 10px;
-
+    position: relative;
+    z-index: 10;
     span {
       font-weight: 700;
+      position: relative;
+    z-index: 10;
     }
   }
   .price {
@@ -520,10 +579,14 @@ const TiketBody = styled.div`
     border: none;
     color: white;
     font-size: 1rem;
+    position: relative;
+    z-index: 10;
   }
   .diclaimer {
     font-size: 0.6rem;
     border: none;
     padding: 0 10px;
+    position: relative;
+    z-index: 10;
   }
 `;

@@ -1,23 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import {Link} from "react-router-dom"
+
 
 
 function Navbar() {
-    const total = useSelector(state => state.cart.totalQuantity)
+    // const total = useSelector(state => state.cart.totalQuantity)
   return (
     <Body>
       <div className="logo">
-        <h3>LOGO</h3>
+    <img src="/img/TUK3.png" alt=""/>
       </div>
-      <Link to="/book" className="cart">
-        <span className="material-symbols-outlined">shopping_cart</span>
-
-        <div  className="count">
-          <span>{total}</span>
-        </div>
-      </Link>
+     
     </Body>
   );
 }
@@ -46,7 +39,12 @@ const Body = styled.div`
   /* padding: 0 10px; */
 
   .logo {
+    margin-top: 30px;
     margin-left: 30px;
+    height: 50px;
+    img{
+      height: 100%;
+    }
   }
   .cart {
     margin-right: 30px;

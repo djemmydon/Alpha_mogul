@@ -5,19 +5,10 @@ import Button from "./res/Button";
 // import Cart from './cart/Cart'
 
 function EventBody() {
-
-
-  
   return (
     <Body>
       <Text>
-        <h1>
-          TUK FEST 
-        </h1>
-
-        <p>
-          By <span>Alpha_Mogu</span>
-        </p>
+    
       </Text>
 
       <MinDetail>
@@ -32,7 +23,9 @@ function EventBody() {
             </p>
           </div>
           <div>
-            <span className="material-symbols-outlined iconn">calendar_month</span>
+            <span className="material-symbols-outlined iconn">
+              calendar_month
+            </span>
 
             <h2>17th December 2022</h2>
             <p>8:000am</p>
@@ -42,17 +35,13 @@ function EventBody() {
             <span className="material-symbols-outlined iconn">payments</span>
 
             <h2>₦3,000 - ₦100,000</h2>
-    
 
             <Button ticket="Book Ticket" />
           </div>
         </div>
       </MinDetail>
 
-
-
       <div className="overlay"></div>
-
     </Body>
   );
 }
@@ -60,10 +49,10 @@ function EventBody() {
 export default EventBody;
 
 const Body = styled.div`
-  background-image: url(/img/bg11.jpeg);
+  background-image: url(/img/tuk-bgron.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: center;
+  background-position: center;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -74,11 +63,11 @@ const Body = styled.div`
 
   .overlay {
     position: absolute;
-    width: 100%;    
+    width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(17, 17, 17, 0.658);
+    /* background: rgba(17, 17, 17, 0.658); */
   }
 `;
 
@@ -93,13 +82,11 @@ const Text = styled.div`
     font-weight: 700;
     font-size: 4rem;
 
-    @media screen and (max-width:700px){
-    font-size: 3rem;
-
+    @media screen and (max-width: 700px) {
+      font-size: 3rem;
     }
-    @media screen and (max-width:500px){
-    font-size: 2rem;
-
+    @media screen and (max-width: 500px) {
+      font-size: 2rem;
     }
   }
   p {
@@ -117,11 +104,12 @@ const MinDetail = styled.div`
   height: 320px;
 
   background: rgba(255, 255, 255, 0.36);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.2px);
--webkit-backdrop-filter: blur(7px);
-border: 1px solid rgba(255, 255, 255, 0.3);  position: absolute;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.2px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
   bottom: -10rem;
   z-index: 100;
   color: black;
@@ -134,9 +122,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);  position: absolute;
   }
   @media screen and (max-width: 900px) {
     height: 100%;
-  bottom: -33rem;
-
-
+    bottom: -33rem;
   }
 
   .box_body {
@@ -162,7 +148,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);  position: absolute;
         font-size: 1.5rem;
       }
       p {
-        color:black;
+        color: black;
       }
     }
   }

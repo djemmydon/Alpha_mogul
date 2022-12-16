@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Event from "./Pages/Event";
 import Book from "./Pages/Book";
+import OrderList from "./Pages/OrderList";
 import Navbar from "./Components/Navbar";
 
 
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Event />} />
           <Route path="/book" element={<Book />} />
+          <Route path="/booking/booking-list" element={<OrderList />} />
           {/* <Route path="/sign-up" element={<SignUp />} /> */}
         </Routes>
       </BrowserRouter>
