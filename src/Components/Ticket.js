@@ -134,6 +134,11 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 10px;
     border-radius: 10px 10px;
 
+    @media screen and (max-width: 400px) {
+    width: 250px;
+      
+    }
+
     .ticket_details {
       display: flex;
       flex-direction: column;

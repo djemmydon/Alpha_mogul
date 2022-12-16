@@ -8,9 +8,13 @@ function Navbar() {
     // const total = useSelector(state => state.cart.totalQuantity)
   return (
     <Body>
-      <Link to="/" className="logo">
+
+      <div className="logo"> 
+         <Link to="/" >
     <img src="/img/TUK3.png" alt=""/>
       </Link>
+      </div>
+    
      
     </Body>
   );
@@ -41,7 +45,7 @@ const Body = styled.div`
 
   .logo {
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 10px;
     height: 50px;
 
     @media screen and (max-width: 500px) {
