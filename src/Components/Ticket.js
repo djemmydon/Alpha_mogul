@@ -121,8 +121,8 @@ const Main = styled.div`
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-  margin-top: 1rem;
-top: 0;
+  margin-bottom: 2rem;
+bottom: 0;
 z-index: 100;
 background: rgba(255, 255, 255, 0.36);
 border-radius: 16px;

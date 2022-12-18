@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import About from '../Components/About'
+// import About from '../Components/About'
 import EventBody from '../Components/EventBody'
 // import Ticket from '../Components/Ticket'
 
@@ -14,7 +14,7 @@ function Event() {
         
 
         <EventBody/>
-        <About/>
+        {/* <About/> */}
 
        
     </div>

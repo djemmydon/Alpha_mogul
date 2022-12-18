@@ -52,9 +52,9 @@ const Body = styled.div`
   background-image: url(/img/tuk-bgron.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   color: white;
   display: flex;

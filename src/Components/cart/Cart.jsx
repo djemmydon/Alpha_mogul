@@ -25,7 +25,7 @@ function Cart({ ticket }) {
     amount: ticket?.allTotalPrice * 100,
     firstName,
     lastName,
-    publicKey: "pk_test_0af8c9c840c5cec7443250dcc87f7a44b02eb8b0",
+    publicKey: "pk_live_c839ea2b23625f8d8fde7e75a7355b36a8ab00ff",
   };
 
   // you can call this function anything
@@ -88,10 +88,10 @@ function Cart({ ticket }) {
   return (
     <>
       <Body>
-        <Head>
+        {/* <Head>
           <h1>Complete Your Purchase</h1>
           <div className="overlay"></div>
-        </Head>
+        </Head> */}
         <MinDetail>
           <div className="box_body">
 
@@ -255,36 +255,36 @@ export default Cart;
 const Body = styled.div`
   height: 100%;
 `;
-const Head = styled.div`
-  padding-top: 5rem;
-  width: 100%;
-  background-image: url(/img/tuk-bgron1.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+// const Head = styled.div`
+//   padding-top: 5rem;
+//   width: 100%;
+//   background-image: url(/img/tuk-bgron1.jpeg);
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
 
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: relative;
-  h1 {
-    font-size: 3rem;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-  }
+//   height: 70vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: white;
+//   position: relative;
+//   h1 {
+//     font-size: 3rem;
+//     text-align: center;
+//     position: relative;
+//     z-index: 10;
+//   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000b6;
-  }
-`;
+//   .overlay {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: #000000b6;
+//   }
+// `;
 
 const MinDetail = styled.div`
   width: 100%;

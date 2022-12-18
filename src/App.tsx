@@ -11,7 +11,7 @@ import {
 import Event from "./Pages/Event";
 import Book from "./Pages/Book";
 import OrderList from "./Pages/OrderList";
-import Navbar from "./Components/Navbar";
+// import Navbar from "./Components/Navbar";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
     <div>
 
       <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
 
         {/* <ScrollToTop /> */}
         <Routes>
