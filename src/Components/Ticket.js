@@ -29,7 +29,7 @@ function List({ items }) {
 
   const navigate = useNavigate()
   const [qty, setQty] = useState(1);
-  console.log(items);
+
 
   const decrease = () => {
     if (qty > 1) {

@@ -14,7 +14,7 @@ function List({ items }) {
     const totalPrice = qty * items.price;
     const cartItems = useSelector((state) => state.cart);
   
-    console.log(cartItems);
+  
   
     const dispatch = useDispatch();
     const addToCartHandler = () => {

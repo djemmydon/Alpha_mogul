@@ -38,7 +38,7 @@ function Cart({ ticket }) {
   // you can call this function anything
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
+   
   };
 
   // console.log(data);
@@ -57,7 +57,7 @@ function Cart({ ticket }) {
 
   const seat = ticket.itemList?.reduce((a,b) => a+b.qty, 0)
 
-  console.log(seat);
+
   const handleDownload=  () => {
     exportAsImage(componentRef.current, "test");
 
@@ -83,7 +83,6 @@ function Cart({ ticket }) {
     navigate("/");
     window.location.reload(false);
 
-     console.log(db);
   }
 
 
@@ -125,10 +124,6 @@ function Cart({ ticket }) {
                   <h2>
                     {" "}
                     <span>Number of Seats:</span> {p.qty}
-                  </h2>
-                  <h2>
-                    {" "}
-                    <span>Transaction Fee:</span> ₦14.00
                   </h2>
                   <h2>
                     {" "}
