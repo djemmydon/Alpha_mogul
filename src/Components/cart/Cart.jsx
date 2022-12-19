@@ -85,6 +85,16 @@ function Cart({ ticket }) {
 
      console.log(db);
   }
+
+
+  React.useEffect(() => {
+    window.onpopstate = () => {
+      window.location.reload(false);
+
+    }
+ 
+  }, [])
+  
   return (
     <>
       <Body>
