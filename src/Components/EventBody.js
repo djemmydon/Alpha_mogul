@@ -8,6 +8,10 @@ import Ticket from "./Ticket";
 function EventBody() {
   return (
     <Body>
+
+      <div className="logo">
+      <img src="/img/bg.png" alt=""/>
+      </div>
       <Ticket/>
 {/* 
       <MinDetail>
@@ -49,17 +53,18 @@ function EventBody() {
 export default EventBody;
 
 const Body = styled.div`
-  background-image: url(/img/tuk-bgron.jpeg);
+  background-image: url(/img/bgron.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position: center;
   width: 100%;
   height: 100vh;
   position: relative;
   color: white;
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 margin: 0;
 padding: 0;
   .overlay {
@@ -69,6 +74,19 @@ padding: 0;
     top: 0;
     left: 0;
     /* background: rgba(17, 17, 17, 0.658); */
+  }
+
+  .logo{
+    height: 150px;
+    img{
+      height: 100%;
+    }
+
+
+    @media screen and (max-width: 390px) {
+      height: 120px;
+      
+    }
   }
 `;
 

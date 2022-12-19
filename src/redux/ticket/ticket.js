@@ -13,9 +13,26 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+
+
+
+      const cartItems = action.payload
+
+      const existItem = state.itemList.find((ext) => ext.id === cartItems.id)
+
+      if(existItem) {
+        state.itemList.map((item) =>
+        item.id === existItem.id ? cartItems : item
+      )
+      
+
+      }else{
+        state.itemList.push(action.payload);
       state.totalQuantity += action.payload.qty;
-      state.itemList.push(action.payload);
       state.allTotalPrice += action.payload.price * action.payload.qty;
+
+
+      }
 
       // message.success("Item Added successfully", 3);
 

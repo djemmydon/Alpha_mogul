@@ -22,7 +22,7 @@ function Cart({ ticket }) {
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: ticket?.allTotalPrice * 100,
+    amount: 1400 + ticket?.allTotalPrice * 100,
     firstName,
     lastName,
     publicKey: "pk_live_c839ea2b23625f8d8fde7e75a7355b36a8ab00ff",
@@ -118,7 +118,11 @@ function Cart({ ticket }) {
                   </h2>
                   <h2>
                     {" "}
-                    <span>Total Price:</span> ₦{p.totalPrice.toLocaleString()}
+                    <span>Transaction Fee:</span> ₦14.00
+                  </h2>
+                  <h2>
+                    {" "}
+                    <span>Total Price:</span> ₦{p.totalPrice.toLocaleString()}.00
                   </h2>
                 </div>
               </div>

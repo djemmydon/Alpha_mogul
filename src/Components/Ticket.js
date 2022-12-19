@@ -120,9 +120,9 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
+    /* position: absolute;
   margin-bottom: 2rem;
-bottom: 0;
+bottom: 0; */
 z-index: 100;
 background: rgba(255, 255, 255, 0.36);
 border-radius: 16px;
@@ -136,7 +136,8 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px 10px;
 
     @media screen and (max-width: 400px) {
-    width: 250px;
+    width: 200px;
+    height: 180px;
       
     }
 
@@ -146,7 +147,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
       align-items: center;
 
       p {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 600;
       }
     }
@@ -189,7 +190,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 const ticketList = [
   {
     id: 1,
-    name: "Regular TIcket",
+    name: "Regular Ticket",
     price: 3000,
   },
 ];
