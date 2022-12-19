@@ -94,6 +94,7 @@ function Cart({ ticket }) {
  
   }, [])
   
+  console.log(process.env.REACT_APP_LIVE_KEY, "loging");
   return (
     <>
       <Body>

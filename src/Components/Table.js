@@ -35,7 +35,7 @@ function Table() {
   return (
     <Body>
 
-<h1>Billing Information</h1>
+<h1>Books</h1>
       
         {" "}
 
