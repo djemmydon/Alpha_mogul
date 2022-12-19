@@ -22,7 +22,7 @@ const cartSlice = createSlice({
 
       if(existItem) {
         state.itemList.map((item) =>
-        item.id === existItem.id ? cartItems : item
+        item.id === existItem.id && cartItems
       )
       
 

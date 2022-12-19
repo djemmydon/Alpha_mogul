@@ -25,7 +25,7 @@ function Cart({ ticket }) {
     amount: 1400 + ticket?.allTotalPrice * 100,
     firstName,
     lastName,
-    publicKey: "pk_live_c839ea2b23625f8d8fde7e75a7355b36a8ab00ff",
+    publicKey: process.env.REACT_APP_PAYMEMT_KEY,
   };
 
   // you can call this function anything
@@ -122,7 +122,7 @@ function Cart({ ticket }) {
                   </h2>
                   <h2>
                     {" "}
-                    <span>Total Price:</span> ₦{p.totalPrice.toLocaleString()}.00
+                    <span>Total Price:</span> ₦{p?.totalPrice?.toLocaleString()}.00
                   </h2>
                 </div>
               </div>

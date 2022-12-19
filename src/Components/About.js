@@ -7,9 +7,8 @@ function About() {
       <header>About The Event</header>
 
       <p>
-        The undisputed kreatives fest is the first of it's kind in the city of
-        ibadan. This event encourages creative minds to use fashion, dance,
-        music, drama, graphics and entertainment to express creativity
+      The undisputed kreatives festival(TUK FEST.)  provides a platform for creative minds to showcase  their skills and talents.
+Activities lined up for TUK festival include fashion pop up, dance, music, drama, stand up comedy, art and craft exhibition, corporate social networking and lots more.
       </p>
     </Body>
   );
@@ -19,7 +18,7 @@ export default About;
 
 const Body = styled.div`
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 0rem;
   text-align: center;
   /* From https://css.glass */
   /* border-radius: 16px;
@@ -36,8 +35,7 @@ const Body = styled.div`
 
   @media screen and (max-width: 900px) {
     margin: 0rem 0;
-    margin-top: 5rem;
-   position: absolute;
+
    top: 24rem;
     width: 100%;
   color: white;
@@ -46,10 +44,9 @@ const Body = styled.div`
 
   }
   @media screen and (max-width: 500px) {
-    margin: 0rem 0;
-    margin-top: 4rem;
-   position: absolute;
-   top: 22rem;
+    margin-bottom: 5rem;
+ 
+ 
     width: 100%;
   color: white;
   /* background: rgba(255, 255, 255, 0.36); */
@@ -58,7 +55,7 @@ const Body = styled.div`
 
   p {
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
   }
 `;

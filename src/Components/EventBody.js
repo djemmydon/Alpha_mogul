@@ -4,6 +4,7 @@ import Ticket from "./Ticket";
 // import Button from "./res/Button";
 // import { PaystackButton } from 'react-paystack';
 // import Cart from './cart/Cart'
+import About from "./About"
 
 function EventBody() {
   return (
@@ -13,6 +14,7 @@ function EventBody() {
       <img src="/img/bg.png" alt=""/>
       </div>
       <Ticket/>
+      <About/>
 {/* 
       <MinDetail>
         <div className="box_body">
@@ -62,7 +64,7 @@ const Body = styled.div`
   position: relative;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 margin: 0;
