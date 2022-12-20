@@ -12,7 +12,7 @@ function Thanks() {
 </div>
 <div>
 <button>
-    <Link to="/">Go back Home</Link>
+    <Link to="/">Home Page</Link>
 </button>
 
 </div>

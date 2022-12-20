@@ -22,7 +22,7 @@ function Cart({ ticket }) {
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount:  ticket?.allTotalPrice * 100,
+    amount: ticket?.allTotalPrice * 100,
     firstName,
     lastName,
     publicKey: process.env.REACT_APP_PAYMEMT_KEY,
@@ -59,7 +59,7 @@ function Cart({ ticket }) {
 
 
   const handleDownload=  () => {
-    exportAsImage(componentRef.current, "test");
+    exportAsImage(componentRef.current, "tukfest-ticket");
 
     addDoc(collection(db, "booking"),{
       
