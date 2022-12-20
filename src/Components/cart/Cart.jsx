@@ -22,7 +22,7 @@ function Cart({ ticket }) {
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: 1400 + ticket?.allTotalPrice * 100,
+    amount:  ticket?.allTotalPrice * 100,
     firstName,
     lastName,
     publicKey: process.env.REACT_APP_PAYMEMT_KEY,
@@ -80,19 +80,15 @@ function Cart({ ticket }) {
     // localStorage.removeItem("allTotalPrice");
     // localStorage.removeItem("totalQuantity");
 
-    navigate("/");
-    window.location.reload(false);
+    navigate("/booking/congrates");
+    
+    // window.location.reload(false);
 
   }
 
 
-  React.useEffect(() => {
-    window.onpopstate = () => {
-      window.location.reload(false);
-
-    }
- 
-  }, [])
+    
+  
   
   console.log(process.env.REACT_APP_LIVE_KEY, "loging");
   return (

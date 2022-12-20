@@ -11,7 +11,7 @@ import {
 import Event from "./Pages/Event";
 import Book from "./Pages/Book";
 import OrderList from "./Pages/OrderList";
-// import Navbar from "./Components/Navbar";
+import Thanks from "./Components/Thanks";
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Event />} />
           <Route path="/book" element={<Book />} />
+          <Route path="/booking/congrates" element={<Thanks />} />
           <Route path="/booking/booking-list" element={<OrderList />} />
           {/* <Route path="/sign-up" element={<SignUp />} /> */}
         </Routes>
