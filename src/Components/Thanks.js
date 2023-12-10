@@ -36,7 +36,7 @@ height: 100vh;
 
 h1{
     font-size: 1.5rem;
-    color: black;
+    color: #fff;
     text-align: center;
 
 }

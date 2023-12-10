@@ -11,8 +11,9 @@ function EventBody() {
     <Body>
 
       <div className="logo">
-      <img src="/img/bg.png" alt=""/>
+      <img src="/img/alpalogo.png" alt=""/>
       </div>
+      <h1>Lifestyle Party</h1>
       <Ticket/>
       <About/>
 {/* 
@@ -55,7 +56,7 @@ function EventBody() {
 export default EventBody;
 
 const Body = styled.div`
-  background-image: url(/img/bgron.jpeg);
+  background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -78,15 +79,22 @@ padding: 0;
     /* background: rgba(17, 17, 17, 0.658); */
   }
 
+  h1{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+  }
   .logo{
-    height: 150px;
+    height: 250px;
     img{
       height: 100%;
     }
 
 
     @media screen and (max-width: 390px) {
-      height: 120px;
+      height: 160px;
       
     }
   }

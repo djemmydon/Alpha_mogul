@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { usePaystackPayment } from "react-paystack";
 // import { useReactToPrint } from "react-to-print";
 import exportAsImage from "../../exportAs";
-import {db} from "../../fire"
+import { db } from "../../fire";
 // import {set, ref} from "firebase/database"
 // import { uid } from "uid";
 import { addDoc, collection } from "firebase/firestore";
@@ -18,7 +18,6 @@ function Cart({ ticket }) {
   const [phone, setPhone] = React.useState("");
   const [data, setData] = React.useState({});
 
-
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
@@ -29,16 +28,27 @@ function Cart({ ticket }) {
   };
 
   // you can call this function anything
-   const onSuccess = (reference) => {
+  const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     setData(reference);
-   
+
+    addDoc(collection(db, "booking"), {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      ref: data.reference,
+      date: new Date().getTime().toString(),
+      amount: ticket?.allTotalPrice,
+      status: data.status,
+      seat,
+      complete: false,
+    });
   };
 
   // you can call this function anything
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
-   
   };
 
   // console.log(data);
@@ -55,41 +65,35 @@ function Cart({ ticket }) {
   //   onAfterPrint: () => alert("print success"),
   // });
 
-  const seat = ticket.itemList?.reduce((a,b) => a+b.qty, 0)
+  const seat = ticket.itemList?.reduce((a, b) => a + b.qty, 0);
 
-
-  const handleDownload=  () => {
+  const handleDownload = () => {
     exportAsImage(componentRef.current, "tukfest-ticket");
 
-    addDoc(collection(db, "booking"),{
-      
-      firstName:firstName,
-      lastName:lastName,
-      email:email,
-      phone:phone,
-      ref: data.reference,
-      date:new Date().getTime().toString(),
-      amount: ticket?.allTotalPrice,
-      status:data.status,
-      seat,
-      complete:false
-  
-      })
+    // addDoc(collection(db, "booking"),{
+
+    //   firstName:firstName,
+    //   lastName:lastName,
+    //   email:email,
+    //   phone:phone,
+    //   ref: data.reference,
+    //   date:new Date().getTime().toString(),
+    //   amount: ticket?.allTotalPrice,
+    //   status:data.status,
+    //   seat,
+    //   complete:false
+
+    //   })
 
     // localStorage.removeItem("itemList");
     // localStorage.removeItem("allTotalPrice");
     // localStorage.removeItem("totalQuantity");
 
     navigate("/booking/congrates");
-    
+
     // window.location.reload(false);
+  };
 
-  }
-
-
-    
-  
-  
   console.log(process.env.REACT_APP_LIVE_KEY, "loging");
   return (
     <>
@@ -98,40 +102,45 @@ function Cart({ ticket }) {
           <h1>Complete Your Purchase</h1>
           <div className="overlay"></div>
         </Head> */}
+        <div className="logo">
+          <img src="/img/alphalogo.png" alt="" />
+        </div>
         <MinDetail>
           <div className="box_body">
+            {ticket.itemList.length === 0 ? (
+              <>
+                <h1 className="item">Empty Ticket</h1>
+              </>
+            ) : (
+              <>
+                {ticket?.itemList?.map((p) => (
+                  <div className="item" key={p.id}>
+                    <div className="left">
+                      <h2>
+                        {/* <span>Name:</span> */}
+                        TUK FEST
+                      </h2>
+                      <span>Dec 30, 2022</span>
 
-            {ticket.itemList.length === 0 ? (<><h1 className="item" >Empty Ticket</h1></>) :
-            
-            (<>
-               {ticket?.itemList?.map((p) => (
-              <div className="item" key={p.id}>
-                <div className="left">
-                  <h2>
-                    {/* <span>Name:</span> */}
-                    TUK FEST
-                  </h2>
-                  <span>Dec 30, 2022</span>
-
-                  <p>
-                    Barcode, No 2, Osuntokun Avene,Old Bodija Estate, Ibadan
-                  </p>
-                </div>
-                <div className="right">
-                  <h2>
-                    {" "}
-                    <span>Number of Seats:</span> {p.qty}
-                  </h2>
-                  <h2>
-                    {" "}
-                    <span>Total Price:</span> ₦{p?.totalPrice?.toLocaleString()}.00
-                  </h2>
-                </div>
-              </div>
-            ))}
-            </>)
-            }
-         
+                      <p>
+                        Barcode, No 2, Osuntokun Avene,Old Bodija Estate, Ibadan
+                      </p>
+                    </div>
+                    <div className="right">
+                      <h2>
+                        {" "}
+                        <span>Number of Seats:</span> {p.qty}
+                      </h2>
+                      <h2>
+                        {" "}
+                        <span>Total Price:</span> ₦
+                        {p?.totalPrice?.toLocaleString()}.00
+                      </h2>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </MinDetail>
         <Form>
@@ -199,7 +208,8 @@ function Cart({ ticket }) {
               }
             >
               <div className="ticket_head">
-                <h1>TUK FEST</h1>
+                <h1>ALPHA MOGUL</h1>
+                <h6>LIFESTYLE PARTY</h6>
                 <span className="material-symbols-outlined">location_on</span>
                 <p>Barcode, No 2, Osuntokun Avenue,Old Bodija Estate, Ibadan</p>
               </div>
@@ -219,7 +229,8 @@ function Cart({ ticket }) {
               </div>
               <div className="input_element">
                 <p>
-                  <span>No. of seat:</span> {ticket?.itemList.reduce((a,b) => (a+b.qty) , 0)}
+                  <span>No. of seat:</span>{" "}
+                  {ticket?.itemList.reduce((a, b) => a + b.qty, 0)}
                 </p>
                 <p>
                   <span>Trans. Refrence:</span> {data.reference}
@@ -244,10 +255,7 @@ function Cart({ ticket }) {
             </TiketBody>
           </div>
 
-          <button
-            type="submit"
-            onClick={handleDownload}
-          >
+          <button type="submit" onClick={handleDownload}>
             Download Ticket now
           </button>
         </Tickets>
@@ -260,6 +268,17 @@ export default Cart;
 
 const Body = styled.div`
   height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .logo{
+    height: 250px;
+    margin: 0 auto;
+    img{
+      height: 100%;
+    }
+  }
 `;
 // const Head = styled.div`
 //   padding-top: 5rem;
@@ -479,6 +498,7 @@ const Tickets = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
+  z-index: 190;
 
   display: flex;
   align-items: center;
@@ -514,7 +534,7 @@ const Tickets = styled.div`
 const TiketBody = styled.div`
   width: 300px;
   height: 400px;
-  background-image: url(/img/tikect.png);
+  background-image: url(/img/alphalogo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -565,7 +585,17 @@ const TiketBody = styled.div`
       color: white;
       border: none;
       position: relative;
-    z-index: 10;
+      z-index: 10;
+    }
+
+    h6{
+      margin: 0;
+      padding: 0;
+      color: white;
+      border: none;
+      position: relative;
+      z-index: 10;
+      font-size: 0.8rem;
     }
   }
 
@@ -580,7 +610,7 @@ const TiketBody = styled.div`
     span {
       font-weight: 700;
       position: relative;
-    z-index: 10;
+      z-index: 10;
     }
   }
   .price {

@@ -84,7 +84,7 @@ function List({ items }) {
 }
 
 const Body = styled.div`
-  /* background: white; */
+  background: black;
   width: 100%;
 
   display: flex;
@@ -124,14 +124,14 @@ const Main = styled.div`
   margin-bottom: 2rem;
 bottom: 0; */
 z-index: 100;
-background: rgba(255, 255, 255, 0.36);
+/* background: rgba(255, 255, 255, 0.36); */
 border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
 backdrop-filter: blur(6.2px);
 -webkit-backdrop-filter: blur(6.2px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+/* border: 1px solid rgba(255, 255, 255, 0.3); */
     color: black;
-    border-bottom: 2px solid #f14105;
+    /* border-bottom: 2px solid #f14105; */
     padding: 10px;
     border-radius: 10px 10px;
 
@@ -145,6 +145,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
       display: flex;
       flex-direction: column;
       align-items: center;
+      color: white;
 
       p {
         font-size: 1rem;
@@ -158,13 +159,13 @@ border: 1px solid rgba(255, 255, 255, 0.3);
       .quantity_minus_remove {
         width: 30px;
         height: 30px;
-        background: red;
+        background: white;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         span {
-          color: white;
+          color: black;
           font-size: 0.9rem;
           font-weight: 500;
         }
@@ -177,10 +178,11 @@ border: 1px solid rgba(255, 255, 255, 0.3);
         align-items: center;
         justify-content: center;
 
-        background: white;
+        background: black;
         box-shadow: 1px 1px 40px #1111;
         span {
           font-weight: 500;
+          color: #fff;
         }
       }
     }
@@ -191,6 +193,6 @@ const ticketList = [
   {
     id: 1,
     name: "Regular Ticket",
-    price: 3000,
+    price: 2000,
   },
 ];
