@@ -8,8 +8,8 @@ function About() {
 
       <p>
         This event will facilitate interpersonal relationship among creatives,
-        entrepreneurs, investors and moguls.Remember your network is your net
-        worth
+        entrepreneurs, investors and moguls. Remember your network is your net
+        worth.
       </p>
     </Body>
   );
