@@ -141,7 +141,7 @@ function Cart({ ticket }) {
                         {/* <span>Name:</span> */}
                         LIFESTYLE PARTY
                       </h2>
-                      <span>Dec 30, 2022</span>
+                      <span>Dec 29, 2023</span>
 
                       <p>
                         Venue: Barcode <br />
