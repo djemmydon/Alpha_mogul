@@ -402,8 +402,8 @@ const MinDetail = styled.div`
         }
         span {
           text-align: start;
-          color: rgb(40, 38, 38);
-          font-size: 0.8rem;
+          color: rgb(255, 255, 255);
+          font-size: 1rem;
           padding: 5px 0;
           font-weight: 600;
         }
