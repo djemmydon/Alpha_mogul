@@ -43,8 +43,8 @@ function Cart({ ticket }) {
     })
       .then((ticket) => console.log(ticket))
       .catch((error) => console.log(error));
-    
-    console.log("here is a ticket")
+
+    console.log("here is a ticket");
   };
   const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
@@ -144,7 +144,8 @@ function Cart({ ticket }) {
                       <span>Dec 30, 2022</span>
 
                       <p>
-                        Barcode, No 2, Osuntokun Avene,Old Bodija Estate, Ibadan
+                        Venue: Barcode <br />
+                        Address: 2, Osuntokun Avenue, Old Bodija Estate, Ibadan.
                       </p>
                     </div>
                     <div className="right">
@@ -233,7 +234,10 @@ function Cart({ ticket }) {
                 <h1>ALPHA MOGUL</h1>
                 <h6>LIFESTYLE PARTY</h6>
                 <span className="material-symbols-outlined">location_on</span>
-                <p>Barcode, No 2, Osuntokun Avenue,Old Bodija Estate, Ibadan</p>
+                <p>
+                  Venue: Barcode <br />
+                  Address: 2, Osuntokun Avenue, Old Bodija Estate, Ibadan.
+                </p>
               </div>
 
               <div>
@@ -251,14 +255,14 @@ function Cart({ ticket }) {
               </div>
               <div className="input_element">
                 <p>
-                  <span>No. of seat:</span>{" "}
+                  <span>No. of seat(s):</span>{" "}
                   {ticket?.itemList.reduce((a, b) => a + b.qty, 0)}
                 </p>
                 <p>
                   <span>Trans. Refrence:</span> {data.reference}
                 </p>
                 <p>
-                  <span>Status</span> {data.status}
+                  <span>Status:</span> {data.status}
                 </p>
                 <p className="price">
                   <span>Amount:</span>₦{ticket.allTotalPrice.toLocaleString()}
@@ -391,7 +395,7 @@ const MinDetail = styled.div`
         width: 200px;
 
         h2 {
-          font-size: 2rem;
+          font-size: 1.3rem;
           padding: 5px 0;
           margin: 0;
           color: #f14105;
