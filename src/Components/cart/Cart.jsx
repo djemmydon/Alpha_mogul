@@ -28,10 +28,7 @@ function Cart({ ticket }) {
   };
 
   // you can call this function anything
-  const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    setData(reference);
-
+  const dataToSend = (data) => {
     addDoc(collection(db, "booking"), {
       firstName: firstName,
       lastName: lastName,
@@ -43,8 +40,33 @@ function Cart({ ticket }) {
       status: data.status,
       seat,
       complete: false,
-    });
+    })
+      .then((ticket) => console.log(ticket))
+      .catch((error) => console.log(error));
+    
+    console.log("here is a ticket")
   };
+  const onSuccess = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    setData(reference);
+    console.log(reference);
+    dataToSend(reference);
+  };
+
+  // const submitForm = async (e) => {
+  //   e.preventDefault();
+
+  //   addDoc(collection(db, "booking"), {
+  //     firstName: firstName,
+  //     lastName: lastName,
+  //     email: email,
+  //     phone: phone,
+  //     date: new Date().getTime().toString(),
+  //     amount: ticket?.allTotalPrice,
+  //     status: "success",
+  //     seat,
+  //   }).then((ticket) => console.log(ticket));
+  // };
 
   // you can call this function anything
   const onClose = () => {
@@ -94,7 +116,6 @@ function Cart({ ticket }) {
     // window.location.reload(false);
   };
 
-  console.log(process.env.REACT_APP_LIVE_KEY, "loging");
   return (
     <>
       <Body>
@@ -118,7 +139,7 @@ function Cart({ ticket }) {
                     <div className="left">
                       <h2>
                         {/* <span>Name:</span> */}
-                        TUK FEST
+                        LIFESTYLE PARTY
                       </h2>
                       <span>Dec 30, 2022</span>
 
@@ -190,6 +211,7 @@ function Cart({ ticket }) {
                 {" "}
                 Pay:₦{ticket?.allTotalPrice.toLocaleString()}
               </button>
+              {/* <button onClick={submitForm}>Submit </button> */}
             </div>
 
             {/* <p>{ticket?.itemList?.redcuce((a,b) => (a+b.qty) , 0)}</p> */}
@@ -272,10 +294,10 @@ const Body = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  .logo{
+  .logo {
     height: 250px;
     margin: 0 auto;
-    img{
+    img {
       height: 100%;
     }
   }
@@ -357,9 +379,10 @@ const MinDetail = styled.div`
 
       @media screen and (max-width: 1200px) {
         width: 100%;
+        margin: 20px;
       }
       @media screen and (max-width: 900px) {
-        height: 300px;
+        height: 250px;
       }
 
       .left {
@@ -588,7 +611,7 @@ const TiketBody = styled.div`
       z-index: 10;
     }
 
-    h6{
+    h6 {
       margin: 0;
       padding: 0;
       color: white;

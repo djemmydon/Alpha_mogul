@@ -4,19 +4,18 @@ import Ticket from "./Ticket";
 // import Button from "./res/Button";
 // import { PaystackButton } from 'react-paystack';
 // import Cart from './cart/Cart'
-import About from "./About"
+import About from "./About";
 
 function EventBody() {
   return (
     <Body>
-
       <div className="logo">
-      <img src="/img/alpalogo.png" alt=""/>
+        <img src="/img/alpalogo.png" alt="" />
       </div>
       <h1>Lifestyle Party</h1>
-      <Ticket/>
-      <About/>
-{/* 
+      <Ticket />
+      <About />
+      {/* 
       <MinDetail>
         <div className="box_body">
           <div>
@@ -50,7 +49,6 @@ function EventBody() {
       <div className="overlay"></div>
     </Body>
   );
-   
 }
 
 export default EventBody;
@@ -68,8 +66,8 @@ const Body = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
   .overlay {
     position: absolute;
     width: 100%;
@@ -79,23 +77,22 @@ padding: 0;
     /* background: rgba(17, 17, 17, 0.658); */
   }
 
-  h1{
+  h1 {
     margin: 0;
     padding: 0;
     font-weight: 700;
     font-size: 2rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
   }
-  .logo{
+  .logo {
+    margin-top: 2rem ;
     height: 250px;
-    img{
+    img {
       height: 100%;
     }
 
-
     @media screen and (max-width: 390px) {
       height: 160px;
-      
     }
   }
 `;
