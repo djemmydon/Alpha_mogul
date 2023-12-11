@@ -34,6 +34,10 @@ const Body = styled.div`
   width: 500px;
   height: 250px;
 
+  header{
+    font-size: 1.3rem;
+  }
+
   @media screen and (max-width: 900px) {
     margin: 0rem 0;
 
