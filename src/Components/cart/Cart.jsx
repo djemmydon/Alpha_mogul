@@ -90,7 +90,7 @@ function Cart({ ticket }) {
   const seat = ticket.itemList?.reduce((a, b) => a + b.qty, 0);
 
   const handleDownload = () => {
-    exportAsImage(componentRef.current, "tukfest-ticket");
+    exportAsImage(componentRef.current, "lifestyle-party");
 
     // addDoc(collection(db, "booking"),{
 
